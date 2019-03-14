@@ -1,0 +1,46 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: right;
+}
+
+html {
+  font-size: 1vw;
+  direction: rtl;
+}
+
+html body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html body.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+html body.wrapper > .myContainer {
+  width: 1040px;
+  margin: 0 0;
+}
+
+header {
+  width: 100%;
+}
+
+header h1 {
+  direction: rtl;
+  text-align: center;
+  color: #060681;
+  font-weight: 700;
+  margin: 10px;
+}
+
+form {
+  margin: 30px 50px;
+}
+
+form input {
+  border-radius: 20px;
+}
+/*# sourceMappingURL=style.css.map */
