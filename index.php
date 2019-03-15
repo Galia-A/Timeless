@@ -1,6 +1,7 @@
 <?php
-require_once("handleData.php");  
-require_once("inputData.php");  
+require_once("handleCSVData.php");  
+require_once("admin/inputData.php");  
+require_once("admin/createForm.php");  
 
 //ctrl alt f
 ?>
@@ -16,7 +17,12 @@ require_once("inputData.php");
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/fonts.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -36,7 +42,8 @@ require_once("inputData.php");
 
             <!-- Header -->
             <header id="top">
-                <h1>אז מה עשיתי היום..? </h1>
+                <h1>Timeless... </h1>
+                <img id= "appleseedsLogo" src="imgs/logo_blue.png" alt="Appleseeds logo">  
             </header>
 
             <form action="" method="post">
@@ -105,6 +112,7 @@ foreach ($subProjectsArray as $key => $value) {
                                 $('#userName').on('change', function() {
                                     let selected = $(this).val();
                                     let instructorsArray = <?php echo json_encode($instructorList);?>[selected];
+                                    document.querySelector("#instructorList").innerHTML = "";
 
                                     for (var i = 0; i < instructorsArray.length; i++) {
                                         var option = document.createElement("option");
@@ -159,11 +167,8 @@ foreach ($subjectsArray as $key => $value) {
     echo "<option value=" .$key ." >" .$value ."</option>";
 }
 ?>
-
                         </select>
-
                     </div>
-
 
                     <button type="submit" class="btn btn-primary">תשמרי לי בבקשה</button>
 

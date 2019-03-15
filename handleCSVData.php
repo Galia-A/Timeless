@@ -1,5 +1,5 @@
 <?php
-require_once("inputData.php");  
+require_once("admin/inputData.php");  
 
 //Check user input data
 if(isset($_POST["userName"]) && isset($_POST["time"])){

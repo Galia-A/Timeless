@@ -26,14 +26,31 @@ html body.wrapper > .myContainer {
 
 header {
   width: 100%;
+  position: relative;
+  height: 75px;
 }
 
 header h1 {
   direction: rtl;
   text-align: center;
+  line-height: 70px;
   color: #060681;
   font-weight: 700;
   margin: 10px;
+  background-color: #90c0e0;
+  height: 75px;
+  direction: ltr;
+  font-family: 'Sniglet', cursive;
+}
+
+header #appleseedsLogo {
+  position: absolute;
+  z-index: 100;
+  top: 0px;
+  left: 5px;
+  width: 100px;
+  margin-top: -10px;
+  padding-top: 0;
 }
 
 form {
@@ -42,5 +59,9 @@ form {
 
 form input {
   border-radius: 20px;
+}
+
+form .form-row {
+  margin-top: 30px;
 }
 /*# sourceMappingURL=style.css.map */
