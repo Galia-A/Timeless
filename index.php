@@ -42,7 +42,7 @@ require_once("admin/createForm.php");
 
             <!-- Header -->
             <header id="top">
-                <h1>Timeless... </h1>
+                <h1>Timeless </h1>
                 <img id= "appleseedsLogo" src="imgs/logo_blue.png" alt="Appleseeds logo">  
             </header>
 
@@ -61,7 +61,7 @@ foreach ($userNamesArray as $key => $value) {
 
                         </select>
                     </div>
-                    <!--column-->
+                    <!-- field group -->
                 </div>
                 <!--row-->
 
@@ -114,8 +114,8 @@ foreach ($subProjectsArray as $key => $value) {
                                     let instructorsArray = <?php echo json_encode($instructorList);?>[selected];
                                     document.querySelector("#instructorList").innerHTML = "";
 
-                                    for (var i = 0; i < instructorsArray.length; i++) {
-                                        var option = document.createElement("option");
+                                    for (let i = 0; i < instructorsArray.length; i++) {
+                                        let option = document.createElement("option");
                                         option.value = instructorsArray[i];
                                         option.text = instructorsArray[i];
                                         document.querySelector("#instructorList").appendChild(option);
@@ -127,7 +127,7 @@ foreach ($subProjectsArray as $key => $value) {
                     <!-- Time -->
                     <div class="form-group col-md-2">
                         <label for="time">סה"כ זמן שלקח*</label>
-                        <input required type="input" class="form-control" id="time" name="time" placeholder="1:30">
+                        <input required type="input" class="form-control" id="time" name="time" placeholder="h:m">
                     </div>
 
 
@@ -158,9 +158,9 @@ foreach ($subProjectsArray as $key => $value) {
                         </div>
                     </div>
                     <!-- subjects  -->
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2" id="subjectsNode">
                         <label for="subjects">נושאי השיחה</label><br>
-                        1. <select class="form-control" id="subjects" name="subjects">
+                            <select class="form-control subjectsFld" id="subjects" name="subjects">
                             <option value="">-----</option>
                             <?php
 foreach ($subjectsArray as $key => $value) {
@@ -168,17 +168,54 @@ foreach ($subjectsArray as $key => $value) {
 }
 ?>
                         </select>
-                    </div>
+                <script>
+                        $('.subjectsFld').on('change', function() {
+                            console.log("on change");
+                            if($(this).val() != ""){
+                                creatNewSubjectsFld();
+                            }
+                        });
+                        
+                        function creatNewSubjectsFld(){
+                            console.log( "working...?");
+                            let selectFld = document.createElement("select");
+                            selectFld.setAttribute("class", "form-control subjectsFld");
+                            selectFld.setAttribute("id", "subjects2");
+                            selectFld.setAttribute("name", "subjects2");
+                            document.querySelector("#subjectsNode").appendChild(selectFld);
 
-                    <button type="submit" class="btn btn-primary">תשמרי לי בבקשה</button>
+                            let subjectsArray = <?php echo json_encode($subjectsArray);?>;
 
+                            let option = document.createElement("option");
+                            option.value = "";
+                            option.text = "-----";
+                            document.querySelector("#subjects2").appendChild(option);
+
+                            for (let i = 0; i < subjectsArray.length; i++) {
+                                    let option = document.createElement("option");
+                                    option.value = subjectsArray[i];
+                                    option.text = subjectsArray[i];
+                                    document.querySelector("#subjects2").appendChild(option);
+                            }
+                                
+                        }
+
+                        </script>
+
+
+
+
+                    </div>                 
                 </div>
-                <!--column-->
+                <!--row-->
+                <button type="submit" class="btn btn-primary">תשמרי לי בבקשה</button>
+                
+            </form>
+            <form method="GET" action="Timeless.csv">
+                <button type="submit" class="btn btn-primary">תורידי את הקובץ בבקשה</button>
+            </form>
         </div>
-        <!--row-->
-        </form>
-    </div>
-    <!--container-->
+        <!--container-->
     </div>
     <!--wrapper-->
 </body>

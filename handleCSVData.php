@@ -11,7 +11,7 @@ if(isset($_POST["userName"]) && isset($_POST["time"])){
 
 function addInfo($newData){
     global $excelHeaders;
-    $file = fopen('myTime.csv', 'a+');
+    $file = fopen('Timeless.csv', 'a+');
     if($data = fgetcsv($file, 1000, ",") == FALSE) {
         //csv is empty
         // save the column headers
