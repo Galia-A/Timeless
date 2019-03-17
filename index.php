@@ -3,6 +3,7 @@ require_once("handleCSVData.php");
 require_once("admin/inputData.php");  
 require_once("admin/createForm.php");  
 
+
 //ctrl alt f
 ?>
 
@@ -109,18 +110,7 @@ foreach ($subProjectsArray as $key => $value) {
                             <option value="">
 
                                 <script>
-                                $('#userName').on('change', function() {
-                                    let selected = $(this).val();
-                                    let instructorsArray = <?php echo json_encode($instructorList);?>[selected];
-                                    document.querySelector("#instructorList").innerHTML = "";
-
-                                    for (let i = 0; i < instructorsArray.length; i++) {
-                                        let option = document.createElement("option");
-                                        option.value = instructorsArray[i];
-                                        option.text = instructorsArray[i];
-                                        document.querySelector("#instructorList").appendChild(option);
-                                    }
-                                });
+                                
                                 </script>
                         </datalist>
                     </div>
@@ -159,8 +149,8 @@ foreach ($subProjectsArray as $key => $value) {
                     </div>
                     <!-- subjects  -->
                     <div class="form-group col-md-2" id="subjectsNode">
-                        <label for="subjects">נושאי השיחה</label><br>
-                            <select class="form-control subjectsFld" id="subjects" name="subjects">
+                        <label for="subjects1">נושאי השיחה</label><br>
+                            <select class="form-control subjectsFld" id="subjects1" name="subjects1">
                             <option value="">-----</option>
                             <?php
 foreach ($subjectsArray as $key => $value) {
@@ -169,43 +159,10 @@ foreach ($subjectsArray as $key => $value) {
 ?>
                         </select>
                 <script>
-                        $('.subjectsFld').on('change', function() {
-                            console.log("on change");
-                            if($(this).val() != ""){
-                                creatNewSubjectsFld();
-                            }
-                        });
-                        
-                        function creatNewSubjectsFld(){
-                            console.log( "working...?");
-                            let selectFld = document.createElement("select");
-                            selectFld.setAttribute("class", "form-control subjectsFld");
-                            selectFld.setAttribute("id", "subjects2");
-                            selectFld.setAttribute("name", "subjects2");
-                            document.querySelector("#subjectsNode").appendChild(selectFld);
+                </script>
 
-                            let subjectsArray = <?php echo json_encode($subjectsArray);?>;
-
-                            let option = document.createElement("option");
-                            option.value = "";
-                            option.text = "-----";
-                            document.querySelector("#subjects2").appendChild(option);
-
-                            for (let i = 0; i < subjectsArray.length; i++) {
-                                    let option = document.createElement("option");
-                                    option.value = subjectsArray[i];
-                                    option.text = subjectsArray[i];
-                                    document.querySelector("#subjects2").appendChild(option);
-                            }
-                                
-                        }
-
-                        </script>
-
-
-
-
-                    </div>                 
+                    </div>  
+                    
                 </div>
                 <!--row-->
                 <button type="submit" class="btn btn-primary">תשמרי לי בבקשה</button>
@@ -218,6 +175,10 @@ foreach ($subjectsArray as $key => $value) {
         <!--container-->
     </div>
     <!--wrapper-->
+   
+   <?php
+    require_once("scripts/formScript.php");  
+    ?>
 </body>
 
 </html>

@@ -4,7 +4,8 @@ require_once("admin/inputData.php");
 //Check user input data
 if(isset($_POST["userName"]) && isset($_POST["time"])){
     //save new data
-    $newData = [($userNamesArray[$_POST["userName"]]), $_POST["date"], $_POST["project"], $_POST["subProject"], $_POST["instructorName"], $_POST["time"],  $_POST["reason"], $_POST["scheduled"], $_POST["subjects"]];
+    $subjects = "try, try, try";
+    $newData = [($userNamesArray[$_POST["userName"]]), $_POST["date"], $_POST["project"], $_POST["subProject"], $_POST["instructorName"], $_POST["time"],  $_POST["reason"], $_POST["scheduled"], $subjects];
     //add to csv
     addInfo($newData);
 }
