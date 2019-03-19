@@ -1,6 +1,8 @@
 <script>
 
 let subjectsArray = <?php echo json_encode($subjectsArray);?>;
+let subjectCount = $("#subjectsCount");
+let subjectOtherCount = $("#subjectsOtherCount");
 
 // change instructor list accurding to user name
 $('#userName').on('change', function() {
@@ -28,6 +30,11 @@ $('.subjectsFld').on('change', function() {
 
 //create new subject field
 function creatNewSubjectsFld(){
+   //update hidden field for counting subjects
+    subjectCount.val(parseInt(subjectCount.val()) + 1);
+    console.log("new select count "+ subjectOtherCount.val());
+
+    //select filed
     let selectFld = document.createElement("select");
     let selectId = "subjects" + ($(".subjectsFld").length + 1);
     
@@ -60,14 +67,20 @@ function creatNewSubjectsFld(){
 }
 
 function createOtherFld(){
+    //update hidden field for counting subjects
+    subjectOtherCount.val(parseInt(subjectOtherCount.val()) + 1);
+    //select filed
+    let otherFldId = "other" + subjectOtherCount.val();
+
     let inputFld = document.createElement("input");
     inputFld.type = "text";
     inputFld.value = "";
     inputFld.class = "form-control otherFld";
-    inputFld.id = "other" + subjectsArray.length - 1,
+    inputFld.id = otherFldId;
+    inputFld.name = otherFldId;
     inputFld.placeholder = "אחר";
     
-    let selectId = "subjects" + ($(".subjectsFld").length);
+   // let selectId = "subjects" + ($(".subjectsFld").length);
     document.querySelector("#subjectsNode").appendChild(inputFld);
 
     $(inputFld).css("margin", "5px 0");

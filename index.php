@@ -142,7 +142,7 @@ foreach ($subProjectsArray as $key => $value) {
                             <label class="custom-control-label" for="scheduledYes">כן</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" name="scheduled" value="not scheduled" id="scheduledNo"
+                            <input checked type="radio" name="scheduled" value="not_scheduled" id="scheduledNo"
                                 class="custom-control-input">
                             <label class="custom-control-label" for="scheduledNo">לא</label>
                         </div>
@@ -161,7 +161,9 @@ foreach ($subjectsArray as $key => $value) {
                 <script>
                 </script>
 
-                    </div>  
+                    </div> 
+                    <input type="hidden" id="subjectsCount" name="subjectsCount" value="1"> 
+                    <input type="hidden" id="subjectsOtherCount" name="subjectsOtherCount" value="0"> 
                     
                 </div>
                 <!--row-->
